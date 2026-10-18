@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: football_dwh
+    schema: public
+    tables:
+      - name: raw_matches
+
+models:
+  - name: stg_matches
+    description: "Очищенная витрина матчей с распакованными полями из JSON"
+    columns:
+      - name: match_id
+        description: "Уникальный ID матча"
+        tests:
+          - unique
+          - not_null
+
+      - name: home_team_name
+        description: "Название домашней команды"
+        tests:
+          - not_null
+
+      - name: away_team_name
+        description: "Название гостевой команды"
+        tests:
+          - not_null
+
+      - name: match_status
+        description: "Статус матча"
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['FINISHED', 'SCHEDULED', 'TIMED', 'IN_PLAY', 'PAUSED', 'POSTPONED', 'SUSPENDED', 'CANCELLED']

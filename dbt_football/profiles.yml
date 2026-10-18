@@ -1,0 +1,12 @@
+dbt_football:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres
+      user: postgres
+      pass: postgres
+      port: 5432
+      dbname: football_dwh
+      schema: analytics
+      threads: 4
