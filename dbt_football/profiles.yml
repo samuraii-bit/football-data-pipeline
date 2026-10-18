@@ -3,7 +3,7 @@ dbt_football:
   outputs:
     dev:
       type: postgres
-      host: postgres
+      host: 127.0.0.1    # или localhost      
       user: postgres
       pass: postgres
       port: 5432
