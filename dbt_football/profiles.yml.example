@@ -1,0 +1,12 @@
+dbt_football:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: 127.0.0.1
+      user: postgres
+      password: "{{ env_var('DBT_PG_PASSWORD', 'postgres') }}"
+      port: 5432
+      dbname: football_dwh
+      schema: analytics
+      threads: 4
